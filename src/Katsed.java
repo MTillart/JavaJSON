@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class Katsed {
     public static void main(String[] args) {
         // 1. tund
@@ -49,11 +48,8 @@ public class Katsed {
         neljasTund.opetaja = "Anna Karutina";
         neljasTund.ruum = "Kopli A - A411 (arvutiklass)";
 
-        System.out.println(kolmasTund);
-        System.out.println(neljasTund);
 
         // 5. tund
-        System.out.println(neljasTund);	        // loo Tund objekt
         Tund viiesTund = new Tund();
         // lisa väärtused
         viiesTund.tund = "6";
@@ -75,8 +71,6 @@ public class Katsed {
         tunnid.add(neljasTund);
         tunnid.add(viiesTund);
         esmaspaev.tundideNimekiri = tunnid;
-
-
 
         System.out.println(esmaspaev);
 
