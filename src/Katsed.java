@@ -1,4 +1,7 @@
 import com.google.gson.Gson;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,7 +92,26 @@ public class Katsed {
 
         Gson g = new Gson();
         String vs18JSON = g.toJson(vs18);
-        System.out.println(vs18JSON);
+        // tunniplaani json lugemine
+        try {
+            URL url = new URL("https://tkhk.siseveeb.ee/veebilehe_andmed/tunniplaan/tunniplaan?nadal=18.12.2019&grupp=1282");
+            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+            String str = "";
+            String result = "";
+            while (null != (str = br.readLine())) {
+                result += str;
+            }
+            // siin kohal olemas vajalikud andmed
+            // kasutame need tunniplaani ehitamiseks
+            Gson tunniplaaniJSON = new Gson();
+            vs18 = tunniplaaniJSON.fromJson(result, Tunniplaan.class);
+            System.out.println(vs18.nadal);
+            System.out.println(vs18.tunnid);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+
 
     }
 }
