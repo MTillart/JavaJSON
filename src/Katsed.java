@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Katsed {
     public static void main(String[] args) {
@@ -6,7 +8,7 @@ public class Katsed {
         // loo Tund objekt
         Tund esimeneTund = new Tund();
         // lisa väärtused
-        esimeneTund.tund = "2";
+        esimeneTund.tund = "1";
         esimeneTund.algus = "08:30";
         esimeneTund.lopp = "10:00";
         esimeneTund.aine = "Mobiilirakenduse kasutajaliidese disain";
@@ -18,7 +20,7 @@ public class Katsed {
         // loo Tund objekt
         Tund teineTund = new Tund();
         // lisa väärtused
-        teineTund.tund = "3";
+        teineTund.tund = "2";
         teineTund.algus = "10:15";
         teineTund.lopp = "11:45";
         teineTund.aine = "Mobiilirakenduse kasutajaliidese disain";
@@ -28,7 +30,7 @@ public class Katsed {
 
         Tund kolmasTund = new Tund();
         // lisa väärtused
-        kolmasTund.tund = "4";
+        kolmasTund.tund = "3";
         kolmasTund.algus = "11:55";
         kolmasTund.lopp = "14:00";
         kolmasTund.aine = "JAVA programmeerimine";
@@ -40,7 +42,7 @@ public class Katsed {
         // loo Tund objekt
         Tund neljasTund = new Tund();
         // lisa väärtused
-        neljasTund.tund = "5";
+        neljasTund.tund = "4";
         neljasTund.algus = "14:10";
         neljasTund.lopp = "15:40";
         neljasTund.aine = "JAVA programmeerimine";
@@ -52,7 +54,7 @@ public class Katsed {
         // 5. tund
         Tund viiesTund = new Tund();
         // lisa väärtused
-        viiesTund.tund = "6";
+        viiesTund.tund = "5";
         viiesTund.algus = "15:45";
         viiesTund.lopp = "17:15";
         viiesTund.aine = "JAVA programmeerimine";
@@ -60,9 +62,11 @@ public class Katsed {
         viiesTund.opetaja = "Anna Karutina";
         viiesTund.ruum = "Kopli A - A411 (arvutiklass)";
 
-        // loo päev
+        // koostame nimekiri tundidest, mis võivad toimuda päeval
+
         Paev esmaspaev = new Paev();
         esmaspaev.kuupaev = "2019-11-18";
+        esmaspaev.nimi = "Esmaspaev";
         // lisame tunnid päevale
         ArrayList<Tund> tunnid = new ArrayList<Tund>();
         tunnid.add(esimeneTund);
@@ -72,7 +76,15 @@ public class Katsed {
         tunnid.add(viiesTund);
         esmaspaev.tundideNimekiri = tunnid;
 
-        System.out.println(esmaspaev);
+        // loome tunniplaan tundide nimekirja abil
+        Tunniplaan vs18 = new Tunniplaan();
+        vs18.nadal = "2019-11-18";
+        vs18.paev = esmaspaev.nimi;
+        vs18.tunnid = new HashMap<String, List<Tund>>();
+        vs18.tunnid.put("2019-11-18", tunnid);
+
+        // kontrollime tunniplaani andmed
+        System.out.println(vs18);
 
     }
 }
